@@ -1,10 +1,10 @@
-# GKP Superdense Coding
+# GKP Superdense Coding over Lossy Bosonic Channels
 
-Reference implementation accompanying the paper:
+Numerical simulations accompanying the paper:
 
-> **Enhanced Superdense Coding with Finite-Energy GKP Codes over a Lossy Bosonic Channel**
+**"Performance of Square and Hexagonal GKP Superdense Coding over Lossy Bosonic Channels"**
 
-This repository contains the analytical implementation, numerical benchmarks, figure-generation scripts, and independent validation routines used in the manuscript.
+This repository reproduces the analytical capacity calculations, numerical parameter sweeps, validation tests, and figures presented in the paper.
 
 ---
 
@@ -12,10 +12,18 @@ This repository contains the analytical implementation, numerical benchmarks, fi
 
 ```
 .
-├── capacity_sweep.py     # Main analytical implementation
-├── figures.py            # Generates all figures in the paper
-├── validation.py         # Independent Monte Carlo and circuit validation
+├── paper/
+│   └── paper.pdf
+│
+├── src/
+│   ├── sweep.py          # Capacity calculations and parameter sweep
+│   └── validation.py     # Monte Carlo and circuit-level validation
+│
+├── figures/
+│   └── figures.py        # Reproduces all figures in the paper
+│
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -23,24 +31,29 @@ This repository contains the analytical implementation, numerical benchmarks, fi
 
 ## Features
 
-- Analytical evaluation of square-lattice GKP superdense coding capacity
-- Finite-energy GKP noise model
-- Pure-loss bosonic channel simulation
-- Entanglement-assisted and Holevo capacity benchmarks
-- Threshold analysis over squeezing and channel transmissivity
-- Independent Monte Carlo verification
-- Stage-by-stage physical circuit validation
+- Square-lattice GKP superdense coding capacity
+- Hexagonal-lattice GKP superdense coding capacity
+- Gaussian entanglement-assisted (EA) capacity benchmark
+- Holevo capacity benchmark
+- Capacity sweeps over:
+  - Squeezing: 7–20 dB
+  - Channel transmissivity:
+    - η = 0.70
+    - η = 0.80
+    - η = 0.90
+    - η = 0.95
+    - η = 0.99
+- Threshold analysis
+- Monte Carlo verification
+- Stage-by-stage circuit simulation validation
 
 ---
 
 ## Requirements
 
-- Python 3.10+
-- NumPy
-- SciPy
-- Matplotlib
+Python 3.10 or newer.
 
-Install dependencies with
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -50,55 +63,34 @@ pip install -r requirements.txt
 
 ## Reproducing the Results
 
-### Capacity calculations
+Run the analytical sweep
 
 ```bash
-python capacity_sweep.py
+python src/sweep.py
 ```
 
-Generates
+Run the validation tests
 
-- Capacity tables
-- Threshold analysis
-- Benchmark comparisons
+```bash
+python src/validation.py
+```
+
+Generate all figures
+
+```bash
+python figures/figures.py
+```
 
 ---
 
-### Figures
+## Validation
 
-```bash
-python figures.py
-```
+The analytical expressions are independently verified using:
 
-Generates all figures appearing in the manuscript.
+- Monte Carlo decoding simulations
+- Stage-by-stage circuit simulations of the complete GKP superdense coding protocol
 
----
-
-### Validation
-
-```bash
-python validation.py
-```
-
-Runs two independent validation procedures:
-
-1. Monte Carlo verification of the analytical decoding probabilities.
-2. Stage-by-stage circuit simulation validating the effective noise model.
-
----
-
-## Methodology
-
-The analytical model evaluates the achievable superdense coding capacity of finite-energy GKP states transmitted through a pure-loss bosonic channel.
-
-The implementation includes comparisons against
-
-- Entanglement-Assisted Classical Capacity
-- Holevo Capacity
-
-to provide performance benchmarks.
-
-Independent validation scripts verify both the analytical decoding probabilities and the effective circuit-level noise derivation.
+The validation script compares simulated results with the analytical predictions across the parameter range considered in the paper.
 
 ---
 
@@ -106,25 +98,12 @@ Independent validation scripts verify both the analytical decoding probabilities
 
 If you use this code in your research, please cite the accompanying paper.
 
-```bibtex
-@article{YOUR_CITATION,
-  title   = {Enhanced Superdense Coding with Finite-Energy GKP Codes over a Lossy Bosonic Channel},
-  author  = {Krishna Gupta},
-  journal = {Under Review},
-  year    = {2026}
-}
 ```
-
-(Will update this entry after publication.)
+Citation information will be added after publication.
+```
 
 ---
 
 ## License
 
 This project is released under the MIT License.
-
----
-
-## Contact
-
-For questions or issues regarding the implementation, please open a GitHub issue.
