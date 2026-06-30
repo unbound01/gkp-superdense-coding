@@ -115,7 +115,7 @@ If you use this code in your research, please cite the accompanying paper.
 }
 ```
 
-(Update this entry after publication.)
+(Will update this entry after publication.)
 
 ---
 
