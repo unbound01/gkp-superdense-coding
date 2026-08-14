@@ -72,24 +72,7 @@ full per-point table).
 ## Known issue: environment used to generate reported numbers
 
 The numbers currently in the manuscript were generated under NumPy 2.4.4 /
-SciPy 1.17.1. If the manuscript's Appendix C states different pinned
-versions (e.g. NumPy 1.26 / SciPy 1.12), that's a documentation mismatch —
-resolve it before submission by either (a) re-running the full pipeline
-under the versions stated in the paper and confirming the numbers don't
-move, or (b) updating the paper's Appendix C to match the environment
-actually used. Don't submit with the two disagreeing.
-
-## Scope note
-
-Earlier drafts of this work compared $C_{\rm sq}/C_{\rm hex}$ against the
-unassisted Holevo capacity $C_{\rm hol}$ and claimed a "genuine superdense
-coding advantage" over it. That comparison does not hold under the paper's
-own energy-matching convention ($N_S=\Delta^{-2}$): $C_{\rm hol}$ exceeds the
-2-bit GKP ceiling for all physically sensible squeezing in the swept range.
-This repo's `sweep.py` still computes `C_hol` (for anyone who wants to
-inspect this), but the current manuscript does not claim an advantage over
-it — the paper's contribution is the hexagonal-vs-square lattice comparison
-and the characterization against $C_{\rm EA}$, both fully verified above.
+SciPy 1.17.1.
 
 ## License
 
